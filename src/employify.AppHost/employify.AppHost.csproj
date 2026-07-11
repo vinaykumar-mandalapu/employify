@@ -1,0 +1,16 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.0.2">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>2343ba65-ad7a-430c-a21e-92515588c57d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\employify.ApiService\employify.ApiService.csproj" />
+    <ProjectReference Include="..\employify.Web\employify.Web.csproj" />
+  </ItemGroup>
+
+</Project>

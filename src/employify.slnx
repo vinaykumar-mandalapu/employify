@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../.gitattributes" />
+    <File Path="../.gitignore" />
+    <File Path="../README.md" />
+  </Folder>
+  <Project Path="employify.ApiService/employify.ApiService.csproj" />
+  <Project Path="employify.AppHost/employify.AppHost.csproj" />
+  <Project Path="employify.ServiceDefaults/employify.ServiceDefaults.csproj" />
+  <Project Path="employify.Tests/employify.Tests.csproj" />
+  <Project Path="employify.Web/employify.Web.csproj" />
+</Solution>
