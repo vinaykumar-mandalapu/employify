@@ -43,7 +43,8 @@
   <ItemGroup>
     <!-- <Build Include="Security\Permissions.sql" /> -->
     <None Include="sql\employify_Create.sql" />
-    <None Include="sql\publish\DeploymentScript.sql" />
+    <None Include="sql\*" />
+    <None Include="sql\publish\*" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="sql\publish\Script.PostDeployment.sql" />
