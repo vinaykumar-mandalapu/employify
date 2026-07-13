@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Aspire.Hosting.AppHost" />
+		<PackageReference Include="Aspire.Hosting.Azure.Sql" />
 		<PackageReference Include="Aspire.Hosting.SqlServer" />
 	</ItemGroup>
 

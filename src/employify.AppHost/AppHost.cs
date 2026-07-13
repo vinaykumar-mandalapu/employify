@@ -17,17 +17,27 @@ builder.Environment.LoadEnvironmentVariablesFromEnvFile(envFilePath);
 
 
 #region SQL Server Container
-IResourceBuilder<ParameterResource> sqlPassword = builder.AddParameter("employify-sqlserver-password", true);
-IResourceBuilder<SqlServerServerResource> sqlserver = builder.AddSqlServer("employify-sqlserver", sqlPassword, port: 1433)
+IResourceBuilder<IResourceWithConnectionString> employifyDbConnectionString;
+if (builder.ExecutionContext.IsPublishMode)
+{
+    employifyDbConnectionString = builder.AddConnectionString("employify");
+} else
+{
+    IResourceBuilder<ParameterResource> sqlPassword = builder.AddParameter("employify-sqlserver-password", true);
+    IResourceBuilder<SqlServerServerResource> sqlserver = builder.AddSqlServer("employify-sqlserver", sqlPassword, 1433)
     .WithDataVolume("employify-sqlserver-volume")
     .WithDockerfile(".", "LocalDb.docker")
     .WithContainerRuntimeArgs("--platform", "linux/amd64", "--restart", "unless-stopped")
-    .WithLifetime(ContainerLifetime.Persistent);
-IResourceBuilder<SqlServerDatabaseResource> _ = sqlserver.AddDatabase("employify");
+    .WithLifetime(ContainerLifetime.Persistent)
+    .PublishAsConnectionString();
+    employifyDbConnectionString = sqlserver.AddDatabase("employify");
+
+    //var azuresql = builder.AddAzureSqlServer("employify-azuresql").AddDatabase("employify-azuresqldb");
+}
 #endregion
-
-
+    
 var apiService = builder.AddProject<Projects.employify_ApiService>("apiservice")
+    .WithReference(employifyDbConnectionString)
     .WithHttpHealthCheck("/health");
 
 builder.AddProject<Projects.employify_Web>("webfrontend")
