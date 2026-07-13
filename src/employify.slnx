@@ -6,8 +6,13 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
+  
   <Project Path="employify.ApiService/employify.ApiService.csproj" />
   <Project Path="employify.AppHost/employify.AppHost.csproj" />
+  <Project Path="employify.Db/employify.sqlproj" Id="1C1E030B-3342-4351-93CB-B9100B029787">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="employify.ServiceDefaults/employify.ServiceDefaults.csproj" />
   <Project Path="employify.Tests/employify.Tests.csproj" />
   <Project Path="employify.Web/employify.Web.csproj" />
