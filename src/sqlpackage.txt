@@ -2,11 +2,13 @@ dotnet tool install -g microsoft.sqlpackage
 
 sqlpackage /a:extract /scs:"Server=127.0.0.1,1433;User ID=sa;Password=Str0nG_p@ssW0rd!;TrustServerCertificate=true;Initial Catalog=employify" /tf:"employify" /p:ExtractTarget=SchemaObjectType
 
- dotnet new sqlproj -n employify.Db
+sqlpackage /a:script /sf:"sql/publish/employify.dacpac" /tcs:"Server=127.0.0.1,1433;User ID=sa;Password=Str0nG_p@ssW0rd!;TrustServerCertificate=true;Initial Catalog=employify" /deployscriptpath:sql/publish/DeploymentScript.sql
 
- dotnet build
+dotnet new sqlproj -n employify.Db
 
- dotnet build -c Release
+dotnet build
+
+dotnet build -c Release
 
 dotnet build /p:RunSqlCodeAnalysis=true
 

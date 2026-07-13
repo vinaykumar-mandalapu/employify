@@ -249,8 +249,8 @@ PRINT N'Creating Table [dbo].[Table_1]...';
 
 GO
 CREATE TABLE [dbo].[Table_1] (
-    [Id]   NCHAR (10) NULL,
-    [Name] NCHAR (10) NULL
+    [Id]      NCHAR (10) NULL,
+    [Designa] NCHAR (10) NULL
 );
 
 

@@ -12,5 +12,40 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>sql</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>sql</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DataRetentionEnabled>False</DataRetentionEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- <Folder Include="Properties" />
+    <Folder Include="Security\" /> -->
+    <Folder Include="sql" />
+    <Folder Include="sql\publish\" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- <Build Include="Security\Permissions.sql" /> -->
+    <None Include="sql\employify_Create.sql" />
+    <None Include="sql\publish\DeploymentScript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="sql\publish\Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>
