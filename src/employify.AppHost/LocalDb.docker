@@ -1,6 +1,6 @@
 ARG base_image=mcr.microsoft.com/mssql/server:2025-latest
-#ARG TARGETPLATFORM=linux/amd64
-#FROM --platform=$TARGETPLATFORM $base_image AS build
+# ARG TARGETPLATFORM=linux/amd64
+# FROM --platform=$TARGETPLATFORM $base_image AS build
 FROM $base_image AS build
 ENV ACCEPT_EULA=Y
 ENV MSSQL_SA_PASSWORD=Str0nG_p@ssW0rd!
@@ -9,7 +9,9 @@ ENV MSSQL_PID=Express
 FROM build AS data
 
 WORKDIR /tmp
-COPY ./sql/*.sql .
+# COPY ./employify.Db/sql/*.sql /tmp/
+COPY ./employify.Db/sql/publish/DeploymentScript.sql .
+
 
 RUN /opt/mssql/bin/mssql-conf set-sa-password \
 	&& /opt/mssql/bin/sqlservr --accept-eula & sleep 10 \

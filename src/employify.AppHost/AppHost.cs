@@ -26,7 +26,7 @@ if (builder.ExecutionContext.IsPublishMode)
     IResourceBuilder<ParameterResource> sqlPassword = builder.AddParameter("employify-sqlserver-password", true);
     IResourceBuilder<SqlServerServerResource> sqlserver = builder.AddSqlServer("employify-sqlserver", sqlPassword, 1433)
     .WithDataVolume("employify-sqlserver-volume")
-    .WithDockerfile(".", "LocalDb.docker")
+    .WithDockerfile("..", "employify.AppHost/LocalDb.docker")
     .WithContainerRuntimeArgs("--platform", "linux/amd64", "--restart", "unless-stopped")
     .WithLifetime(ContainerLifetime.Persistent)
     .PublishAsConnectionString();
